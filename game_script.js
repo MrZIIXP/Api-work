@@ -119,7 +119,6 @@ function Usering(datas) {
 		name.innerHTML = el.name
 		let id = document.createElement('h2')
 		id.innerHTML = el.ides
-		console.log(el.i)
 		let status = document.createElement('h2')
 		status.innerHTML = el.status ? 'Active' : 'Not active'
 		let image = document.createElement('img')
@@ -172,4 +171,8 @@ function Usering(datas) {
 	})
 }
 
-setInterval(() => {location.reload()}, 6000)
+Users()
+setInterval(() => {
+	Users()
+	console.log("Обновлено")
+}, 5000)
