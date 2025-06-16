@@ -175,4 +175,4 @@ Users()
 setInterval(() => {
 	Users()
 	console.log("Обновлено")
-}, 100)
+}, 3000)
