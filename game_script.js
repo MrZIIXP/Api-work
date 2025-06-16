@@ -172,4 +172,4 @@ function Usering(datas) {
 	})
 }
 
-setInterval(Users, 1000)
+setInterval(Users(), 1000)
