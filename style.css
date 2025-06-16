@@ -1,0 +1,36 @@
+img{
+	width: 100%;
+	height: 400px;
+	object-fit: cover;
+	border-radius: 100%;
+}
+.box{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+.card{
+	width: 28%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	border-radius: 10px;
+}
+.AddPerson, .EditPerson{
+	font-size: 32px;
+	background: none;
+	border: none;
+}
+.AddPersonForm, .EditPersonForm{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.Img, .Img2{
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 100%;
+}
