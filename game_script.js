@@ -174,5 +174,4 @@ function Usering(datas) {
 Users()
 setInterval(() => {
 	Users()
-	console.log("Обновлено")
 }, 3000)
