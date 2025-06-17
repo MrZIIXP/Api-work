@@ -1,11 +1,23 @@
-let Password = localStorage.getItem("Password")
-let UserName = localStorage.getItem("UserName")
 let Api = 'https://68500995e7c42cfd17971442.mockapi.io/Users'
+let api = 'https://68500995e7c42cfd17971442.mockapi.io/Windows'
 let box = document.querySelector('.box')
+let Password = localStorage.getItem('Password')
+let UserName = localStorage.getItem('UserName')
 async function Users() {
 	try {
 		let datas = await (await fetch(Api)).json()
 		Usering(datas)
+		console.log('Upgrade')
+	} catch (error) {
+		console.error('Error')
+	}
+}
+
+async function CheckUsers() {
+	try {
+		let datas = await (await fetch(api)).json()
+		ChechUserDel(datas)
+		console.log(datas)
 		console.log('Upgrade')
 	} catch (error) {
 		console.error('Error')
@@ -91,6 +103,18 @@ async function UpdateStatus(id, status) {
 	}
 }
 
+function ChechUserDel(data) {
+	let find = false
+	data.filter(el => {
+		if (el.name == UserName && el.password == Password) {
+			find = true
+		}
+	})
+	if (!find) {
+		location.href = "./Login.HTML"
+	}
+}
+
 async function Edit_Every(id, obj) {
 	try {
 		await fetch(`${Api}/${id}`, {
@@ -122,7 +146,7 @@ function Usering(datas) {
 		id.innerHTML = el.ides
 		let status = document.createElement('h2')
 		status.innerHTML = el.status ? 'Active' : 'Not active'
-		let By_user = document.createElement("h1")
+		let By_user = document.createElement('h1')
 		By_user.innerHTML = `By: ${el.by_name}`
 		let image = document.createElement('img')
 		let Actions = document.createElement('div')
@@ -173,15 +197,18 @@ function Usering(datas) {
 		} else {
 			image.style.border = '5px solid red'
 		}
-		card.append(image,By_user, name, id, status, Actions)
+		card.append(image, By_user, name, id, status, Actions)
 		box.appendChild(card)
 	})
 }
 let User_Name = document.querySelector('.User_Name')
 Users()
 setInterval(() => {
+	Password = localStorage.getItem('Password')
+	UserName = localStorage.getItem('UserName')
 	User_Name.innerHTML = localStorage.getItem('UserName')
 	Users()
+	CheckUsers()
 	if (!Password && !UserName) {
 		location.href = './Login.HTML'
 	}
