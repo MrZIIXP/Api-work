@@ -182,7 +182,6 @@ Users()
 setInterval(() => {
 	User_Name.innerHTML = localStorage.getItem('UserName')
 	Users()
-	console.log(UserName, Password)
 	if (!Password && !UserName) {
 		location.href = './Login.HTML'
 	}
