@@ -64,7 +64,7 @@ label{
 	color :white;
 	font-size: 25px;
 }
-@media (min-width: 510px) {
+@media (max-width: 500px) {
 	.box{
 		flex-direction: column;
 	}
