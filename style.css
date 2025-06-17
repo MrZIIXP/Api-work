@@ -64,3 +64,12 @@ label{
 	color :white;
 	font-size: 25px;
 }
+@media (min-width: 510px) {
+	.box{
+		flex-direction: column;
+	}
+	.card{
+		width: 90%;
+		margin: 0 auto;
+	}
+}

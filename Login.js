@@ -17,7 +17,6 @@ function Search(data) {
 			element.name == Reg_name.value &&
 			element.password == Reg_password.value
 		) {
-			console.log(element.name, element.password)
 			Reg_confirm.style.display = 'none'
 			localStorage.setItem('UserName', Reg_name.value)
 			localStorage.setItem('Password', Reg_password.value)
