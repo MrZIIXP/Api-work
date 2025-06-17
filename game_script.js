@@ -69,7 +69,6 @@ AddPersonForm.onsubmit = e => {
 		AddPerson(obj)
 		AddPersonForm.reset()
 		AddDialog.close()
-		// Users()
 	}
 }
 
@@ -103,11 +102,9 @@ async function Edit_Every(id, obj) {
 	}
 }
 
-
-let EditDialog = document.querySelector(".EditDialog")
-let EditPersonsForm = document.querySelector(".EditPersonForm")
-let Img2 = document.querySelector(".Img2")
-
+let EditDialog = document.querySelector('.EditDialog')
+let EditPersonsForm = document.querySelector('.EditPersonForm')
+let Img2 = document.querySelector('.Img2')
 
 function Usering(datas) {
 	box.innerHTML = ''
@@ -132,22 +129,25 @@ function Usering(datas) {
 		Edit.innerHTML = 'Edit'
 		Edit.onclick = () => {
 			EditDialog.showModal()
-			EditPersonsForm["Name"].value = el.name
-			EditPersonsForm["Image"].value = el.img
+			EditPersonsForm['Name'].value = el.name
+			EditPersonsForm['Image'].value = el.img
 			Img2.src = el.img
-			EditPersonsForm.onsubmit = (e) => {
+			EditPersonsForm.onsubmit = e => {
 				e.preventDefault()
-				EditPersonsForm["Image"].oninput = () => {
-					Img2.src = EditPersonsForm["Image"].value || "https://th.bing.com/th/id/OIP.GHGGLYe7gDfZUzF_tElxiQHaHa?o=7rm=3&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3"
+				EditPersonsForm['Image'].oninput = () => {
+					Img2.src =
+						EditPersonsForm['Image'].value ||
+						'https://th.bing.com/th/id/OIP.GHGGLYe7gDfZUzF_tElxiQHaHa?o=7rm=3&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3'
 				}
 				Img2.onerror = () => {
-					Img2.src = "https://th.bing.com/th/id/OIP.GHGGLYe7gDfZUzF_tElxiQHaHa?o=7rm=3&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3"
+					Img2.src =
+						'https://th.bing.com/th/id/OIP.GHGGLYe7gDfZUzF_tElxiQHaHa?o=7rm=3&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3'
 				}
 				let obj = {
 					ides: Date.now(),
-					name: EditPersonsForm["Name"].value,
-					img: EditPersonsForm["Image"].value,
-					status: el.status
+					name: EditPersonsForm['Name'].value,
+					img: EditPersonsForm['Image'].value,
+					status: el.status,
 				}
 				Edit_Every(el.id, obj)
 				EditDialog.close()
@@ -170,8 +170,15 @@ function Usering(datas) {
 		box.appendChild(card)
 	})
 }
-
+let User_Name = document.querySelector('.User_Name')
+let Password = localStorage.getItem("Password")
+let UserName = localStorage.getItem("UserName")
 Users()
 setInterval(() => {
+	User_Name.innerHTML = localStorage.getItem('UserName')
 	Users()
+	console.log(UserName, Password)
+	if (!Password && !UserName) {
+		location.href = './Login.HTML'
+	}
 }, 3000)
