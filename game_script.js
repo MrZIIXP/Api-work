@@ -1,3 +1,5 @@
+let Password = localStorage.getItem("Password")
+let UserName = localStorage.getItem("UserName")
 let Api = 'https://68500995e7c42cfd17971442.mockapi.io/Users'
 let box = document.querySelector('.box')
 async function Users() {
@@ -64,6 +66,8 @@ AddPersonForm.onsubmit = e => {
 			AddPersonForm['Image'].value ||
 			'https://th.bing.com/th/id/OIP.GHGGLYe7gDfZUzF_tElxiQHaHa?o=7rm=3&rs=1&pid=ImgDetMain&cb=idpwebp1&o=7&rm=3',
 		status: false,
+		by_name: UserName,
+		by_password: Password,
 	}
 	if (obj.name.trim() != '') {
 		AddPerson(obj)
@@ -118,6 +122,8 @@ function Usering(datas) {
 		id.innerHTML = el.ides
 		let status = document.createElement('h2')
 		status.innerHTML = el.status ? 'Active' : 'Not active'
+		let By_user = document.createElement("h1")
+		By_user.innerHTML = `By: ${el.by_name}`
 		let image = document.createElement('img')
 		let Actions = document.createElement('div')
 		let Del = document.createElement('button')
@@ -125,6 +131,7 @@ function Usering(datas) {
 		Del.onclick = () => {
 			DeleteCard(el.id)
 		}
+
 		let Edit = document.createElement('button')
 		Edit.innerHTML = 'Edit'
 		Edit.onclick = () => {
@@ -166,13 +173,11 @@ function Usering(datas) {
 		} else {
 			image.style.border = '5px solid red'
 		}
-		card.append(image, name, id, status, Actions)
+		card.append(image,By_user, name, id, status, Actions)
 		box.appendChild(card)
 	})
 }
 let User_Name = document.querySelector('.User_Name')
-let Password = localStorage.getItem("Password")
-let UserName = localStorage.getItem("UserName")
 Users()
 setInterval(() => {
 	User_Name.innerHTML = localStorage.getItem('UserName')
